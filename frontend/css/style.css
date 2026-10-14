@@ -2,6 +2,26 @@
    VIDYA-X AI — Global Styles (Step 1)
    ============================================ */
 
+:root {
+  color-scheme: light;
+  --brand: #4f46e5;
+  --brand-strong: #4338ca;
+  --brand-soft: #eef2ff;
+  --ink: #17233b;
+  --muted: #64748b;
+  --page: #f4f7fb;
+  --surface: #ffffff;
+  --line: #dce4ef;
+  --success: #15803d;
+  --warning: #a16207;
+  --danger: #b42318;
+  --radius-card: 16px;
+  --radius-control: 10px;
+  --shadow-card: 0 12px 32px rgba(24, 39, 75, 0.07);
+  --focus-ring: 0 0 0 3px rgba(79, 70, 229, 0.22);
+  --motion-fast: 180ms ease;
+}
+
 /* ---------- Reset & Base ---------- */
 *,
 *::before,
@@ -18,8 +38,8 @@ html {
 
 body {
   font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-  color: #1e293b;
-  background-color: #f8fafc;
+  color: var(--ink);
+  background-color: var(--page);
   line-height: 1.6;
   min-height: 100vh;
   display: flex;
@@ -29,7 +49,7 @@ body {
 /* ---------- Header ---------- */
 .site-header {
   text-align: center;
-  padding: 2rem 1rem 1rem;
+  padding: 1.75rem 1rem 1.25rem;
 }
 
 .logo {
@@ -62,8 +82,9 @@ body {
   width: 100%;
   max-width: 520px;
   background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
   padding: 2.5rem 2rem;
 }
 
@@ -107,18 +128,20 @@ body {
   width: 100%;
   padding: 0.65rem 0.85rem;
   font-size: 0.95rem;
-  border: 1.5px solid #cbd5e1;
-  border-radius: 10px;
-  background: #f8fafc;
-  color: #1e293b;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  min-height: 44px;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius-control);
+  background: #fbfcfe;
+  color: var(--ink);
+  transition: border-color var(--motion-fast), box-shadow var(--motion-fast), background var(--motion-fast);
 }
 
 .form-group input:focus,
 .form-group select:focus {
   outline: none;
-  border-color: #6366f1;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  border-color: var(--brand);
+  background: #fff;
+  box-shadow: var(--focus-ring);
 }
 
 /* Field‑level error state */
@@ -144,16 +167,17 @@ body {
   font-size: 1rem;
   font-weight: 700;
   color: #ffffff;
-  background: linear-gradient(135deg, #6366f1, #818cf8);
+  background: var(--brand);
   border: none;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.2s;
+  transition: transform var(--motion-fast), box-shadow var(--motion-fast), background var(--motion-fast);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35);
+  background: var(--brand-strong);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.2);
 }
 
 .btn-primary:active {
@@ -161,7 +185,7 @@ body {
 }
 
 .btn-primary:focus-visible {
-  outline: 3px solid #6366f1;
+  outline: 3px solid var(--brand);
   outline-offset: 2px;
 }
 
@@ -193,8 +217,9 @@ body {
 
 .dashboard-welcome {
   background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
   padding: 2rem;
   margin-bottom: 2rem;
 }
@@ -227,16 +252,23 @@ body {
 
 .feature-card {
   background: #ffffff;
-  border-radius: 14px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: 0 3px 12px rgba(24, 39, 75, 0.04);
   padding: 1.5rem 1.25rem;
   text-align: center;
-  transition: transform 0.15s, box-shadow 0.2s;
+  transition: transform var(--motion-fast), box-shadow var(--motion-fast), border-color var(--motion-fast);
 }
 
 .feature-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  border-color: #c7d2fe;
+  box-shadow: 0 10px 22px rgba(24, 39, 75, 0.08);
+}
+
+.feature-card:focus-within {
+  outline: 3px solid rgba(79, 70, 229, 0.2);
+  outline-offset: 2px;
 }
 
 .feature-icon {
@@ -262,15 +294,15 @@ body {
   padding: 0.35rem 0.75rem;
   font-size: 0.8rem;
   font-weight: 600;
-  color: #4f46e5;
-  background-color: #eef2ff;
+  color: var(--brand-strong);
+  background-color: var(--brand-soft);
   border-radius: 6px;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
 .card-link:hover {
-  background-color: #6366f1;
+  background-color: var(--brand);
   color: #ffffff;
   text-decoration: none;
 }
@@ -291,16 +323,73 @@ body {
   text-align: center;
   padding: 1.25rem 1rem;
   font-size: 0.8rem;
-  color: #94a3b8;
+  color: var(--muted);
+}
+
+/* Shared keyboard focus and navigation treatment across feature pages. */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid rgba(79, 70, 229, 0.55);
+  outline-offset: 2px;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+  margin: 1rem auto 0;
+}
+
+.nav-links a {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--motion-fast), background var(--motion-fast), border-color var(--motion-fast);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--brand-strong);
+  background: var(--brand-soft);
+  border-color: #dbe2ff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 600px) {
+  .site-header { padding-top: 1.25rem; }
+
   .form-card {
-    padding: 1.75rem 1.25rem;
+    padding: 1.5rem 1.1rem;
   }
 
   .feature-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem;
   }
+
+  .feature-card {
+    padding: 1rem 0.75rem;
+  }
+
+  .nav-links a {
+    padding: 0.45rem 0.55rem;
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .feature-grid { grid-template-columns: 1fr; }
 }

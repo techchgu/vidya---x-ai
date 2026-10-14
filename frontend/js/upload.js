@@ -20,7 +20,7 @@ var API_UPLOAD_URL = API_BASE_URL + "/api/upload";
 var MATERIALS_KEY = "vidyaXMaterials";
 var PROFILE_KEY = "vidyaXProfile";
 var MAX_FILE_SIZE = 500 * 1024 * 1024; // 500 MB in bytes
-var ALLOWED_EXTENSIONS = [".pdf", ".ppt", ".pptx"];
+var ALLOWED_EXTENSIONS = [".pdf", ".ppt", ".pptx", ".mp4"];
 
 // ── State: files queued in the UI ──
 var selectedFiles = [];
@@ -540,6 +540,7 @@ function getTypeLabel(ext) {
     case ".pdf":  return "PDF";
     case ".ppt":  return "PPT";
     case ".pptx": return "PPTX";
+    case ".mp4":  return "Video";
     default:      return "File";
   }
 }
@@ -549,6 +550,7 @@ function getFileIcon(ext) {
     case ".pdf":  return "\uD83D\uDCD5"; // 📕
     case ".ppt":
     case ".pptx": return "\uD83D\uDCCA"; // 📊
+    case ".mp4":  return "\uD83C\uDFA5"; // 🎥
     default:      return "\uD83D\uDCC4"; // 📄
   }
 }

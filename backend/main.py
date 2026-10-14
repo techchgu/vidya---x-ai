@@ -16,7 +16,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
-from processors import process_pdf, process_ppt
+from processors import process_pdf, process_ppt, process_video
 from services import (
     ensure_directories,
     get_file_extension,
@@ -148,7 +148,7 @@ async def upload_material(
     course_name: str = Form("General"),
 ):
     """
-    Accept an uploaded course material (.pdf, .ppt, .pptx),
+    Accept an uploaded course material (.pdf, .ppt, .pptx, .mp4),
     run the specialized content processor, and persist structured extraction.
     """
     if not file.filename:
@@ -163,7 +163,7 @@ async def upload_material(
             status_code=status.HTTP_400_BAD_REQUEST,
             content={
                 "success": False,
-                "error": f"Unsupported file type '{ext}'. Supported formats: PDF, PPT, PPTX.",
+                "error": f"Unsupported file type '{ext}'. Supported formats: PDF, PPT, PPTX, MP4.",
             },
         )
 
@@ -210,6 +210,9 @@ async def upload_material(
         elif ext in {".ppt", ".pptx"}:
             source_type = "ppt"
             units = process_ppt(saved_path, file_id, clean_name)
+        elif ext == ".mp4":
+            source_type = "video"
+            units = process_video(saved_path, file_id, clean_name)
     except (ValueError, RuntimeError) as proc_err:
         return JSONResponse(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,

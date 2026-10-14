@@ -17,7 +17,7 @@ UPLOAD_DIR = BACKEND_DIR / "uploads"
 EXTRACTED_DIR = BACKEND_DIR / "extracted"
 
 # Allowed course material extensions (in lowercase)
-ALLOWED_EXTENSIONS = {".pdf", ".ppt", ".pptx"}
+ALLOWED_EXTENSIONS = {".pdf", ".ppt", ".pptx", ".mp4"}
 
 
 def ensure_directories() -> None:
